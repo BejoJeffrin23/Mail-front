@@ -1,0 +1,95 @@
+<nav class="navbar navbar-expand-md navbar-light " style="background-color:blue">
+
+  <img src="assets/download.png" class="logo">
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
+    <span class="navbar-toggler-icon"></span>
+
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active gap">
+        <a class="nav-link" [routerLink]="['/inbox']">Inbox <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item gap">
+        <a class="nav-link" [routerLink]="['/drafts']">Drafts</a>
+      </li>
+      <li class="nav-item gap">
+        <a class="nav-link" [routerLink]="['/trash']">Trash</a>
+      </li>
+      <li class="nav-item gap">
+        <a class="nav-link" [routerLink]="['/sent']">Sent</a>
+      </li>
+    </ul>
+    <button class="btn btn-outline-success my-2 my-sm-0 " id="out" type="submit" (click)="logout()">LogOut</button>
+
+  </div>
+
+</nav>
+<br>
+
+<div class="row p-0 m-0 im ">
+
+  <div class="col-sm"></div>
+  <div class="sides">
+
+    <div class="col-sm p-5">
+      <form #eventForm="ngForm" (submit)="sentMail()">
+        <div>
+          <label>From :</label>
+          <h6 style="display: inline-block;margin-left:30px;">{{name}}</h6>
+        </div>
+
+        <div class="form-group">
+          <span>To : </span>
+
+
+          <select [(ngModel)]="recieverEmail" name="isAdmin" id="isAdmin" class="form-control">
+            <option value="user1@gmail.com">User-1 (user1@gmail.com)</option>
+            <option value="user2@gmail.com">User-2 (user2@gmail.com)</option>
+            <option value="user3@gmail.com">User-3 (user3@gmail.com)</option>
+            <option value="user4@gmail.com">User-4 (user4@gmail.com)</option>
+            <option value="user5@gmail.com">User-5 (user5@gmail.com)</option>
+            <option value="user6@gmail.com">User-6 (user6@gmail.com)</option>
+            <option value="user7@gmail.com">User-7 (user7@gmail.com)</option>
+            <option value="user8@gmail.com">User-8 (user8@gmail.com)</option>
+            <option value="user9@gmail.com">User-9 (user9@gmail.com)</option>
+            <option value="user10@gmail.com">User-10 (user10@gmail.com)</option>
+
+          </select>
+        </div>
+
+        <div class="form-group ">
+          <label class="tt">Subject</label>
+          <input type="text" [(ngModel)]="subject" name="subject" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+          <label class="tt">Compose mail :</label>
+          <textarea [(ngModel)]="content" name="content" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <div class="row">
+            <label class="col-sm-3 col-form-label" for="files">Documents</label>
+            <div class="col-sm-9">
+              <input type="file" (change)="Selected($event)" />
+            </div>
+          </div>
+        </div>
+
+        <button class="btn btn-success" [disabled]="eventForm.invalid" type="submit">Create</button>
+      </form>
+
+    </div>
+
+
+  </div>
+
+  <div class="col-sm"></div>
+</div>
+<br>

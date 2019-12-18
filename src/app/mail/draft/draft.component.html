@@ -1,0 +1,58 @@
+<nav class="navbar navbar-expand-md navbar-light " style="background-color:blue">
+
+  <img src="assets/download.png" class="logo">
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
+    <span class="navbar-toggler-icon"></span>
+
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item gap">
+        <a class="nav-link a" [routerLink]="['/inbox']">Inbox <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active gap">
+        <a class="nav-link a" [routerLink]="['/drafts']">Drafts</a>
+      </li>
+      <li class="nav-item gap">
+        <a class="nav-link a" [routerLink]="['/trash']">Trash</a>
+      </li>
+      <li class="nav-item gap">
+        <a class="nav-link a" [routerLink]="['/sent']">Sent</a>
+      </li>
+    </ul>
+    <button class="btn btn-outline-success my-2 my-sm-0 " id="out" type="submit" (click)="logout()">LogOut</button>
+
+  </div>
+
+</nav>
+<br>
+<div>
+  <marquee behavior="scroll" direction="left" scrollamount="7">
+    <h3>Hello <b class="name">{{userName}}</b>...Welcome to Mail App</h3>
+  </marquee>
+</div>
+
+
+
+<div class="check">
+  <button class="btn btn-primary button" (click)="create()">
+    <h4>Compose mail +</h4>
+  </button>
+</div>
+<br>
+<div *ngFor="let mail of details">
+  <div class="card margin" (click)="view(mail.id)" *ngIf="mail">
+    <div class="card-header">
+      <h4>From : {{mail.senderName}}</h4>
+    </div>
+    <div class="card-body set">
+      <h5 class="card-title">{{mail.subject}}</h5>
+      <p class="card-text">{{mail.content}}</p>
+    </div>
+  </div>
+</div>
